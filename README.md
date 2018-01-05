@@ -92,6 +92,12 @@ influxdb::raw::db_utf8 raw_db("http://localhost:8086", "my_db");
 raw_db.with_authentication(username, password);
 auto query = ...
 ```
+## Cloning
+The library uses git submodules.  The easiest way to ensure that the submodules are included in the clone is to add `--recursive` in the clone command
+
+```
+git clone --recursive https://github.com/imvuong/influxdb-cpp-rest
+```
 
 ## Build & Test
 
@@ -106,6 +112,24 @@ The easiest way to install it on MacOS X and Linux turned out to be via [Homebre
 Once the install `brew install cpprestsdk` succeeds, build: `make -C build/<platform>/gmake config=release_x64` and run the test.
 
 If the build fails due to failed dependencies, check [premake5.lua](premake5.lua) for the build config, and regenerate makefiles if necessary via `premake/premake5<os-specific> gmake`
+
+## Building - OSX
+
+Installing dependencies using Homebrew
+
+```
+brew install fmt cpprestsdk openssl
+```
+
+Building influxdb-cpp-rest
+
+```
+cd influxdb-cpp-rest
+cd build
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/path/to/install/dir -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl -DOPENSSL_LIBRARIES=/usr/local/opt/openssl/lib ..
+make
+make install
+```
 
 ## Thanks to
 

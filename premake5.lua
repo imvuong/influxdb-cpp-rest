@@ -80,7 +80,7 @@ make_static_lib('fmt', {
 use_standard('c++14')
 
 --------------------------------------------------------------------
-make_static_lib('influxdb-cpp-rest', {
+make_shared_lib('influxdb-cpp-rest', {
 	'src/influxdb-cpp-rest/**.*',
 })
 
